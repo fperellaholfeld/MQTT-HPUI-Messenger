@@ -8,7 +8,7 @@ def main(ip: str, port: int, protocol: str) -> None:
     protocol:  Leave empty for `tcp` if using websockets, pass `websockets`
     """
 
-    if protocol not in ("websockets", None):
+    if protocol not in ("websockets", "tcp", None):
         raise Exception("Only `websockets` allowed for protocol")
     client = mqtt.Client(transport=protocol)
     client.connect(ip, port)
@@ -17,4 +17,4 @@ def main(ip: str, port: int, protocol: str) -> None:
 
 
 if __name__ == '__main__':
-    main("127.0.0.1", 80, "websockets")
+    main("127.0.0.1", 80, "tcp")
