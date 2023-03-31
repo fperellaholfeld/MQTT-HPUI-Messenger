@@ -13,8 +13,15 @@ def main(ip: str, port: int, protocol: str) -> None:
     client = mqtt.Client(transport=protocol)
     client.connect(ip, port)
 
-    client.publish("test message for HPUI Messenger with Android", True)
+    
+    client.publish("hpui/index_distal", True)
+    time.sleep(2)
+    client.publish("hpui/index_middle", True)
+    time.sleep(2)
+    client.publish("hpui/index_proximal", True)
+    
+
 
 
 if __name__ == '__main__':
-    main("127.0.0.1", 80, "tcp")
+    main("127.0.0.1", 80, "websockets")
